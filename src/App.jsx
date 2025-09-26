@@ -1,4 +1,5 @@
-import React, { useRef } from 'react'; // Adicionado 'useRef'
+// src/App.jsx
+import React, { useRef } from 'react'; // 1. Reimportamos o 'useRef'
 import { useStore } from './lib/store';
 import { useIsMobile } from './lib/useIsMobile';
 import BootScreen from './components/os/BootScreen';
@@ -10,24 +11,28 @@ import MobileWindow from './components/os/MobileWindow';
 function App() {
   const { bootState, openWindows } = useStore();
   const isMobile = useIsMobile();
-  const constraintsRef = useRef(null); // LINHA ADICIONADA
+  
+  // 2. CRIAMOS AS "PAREDES" AQUI, no componente pai que contém tudo.
+  const constraintsRef = useRef(null);
 
   if (bootState === 'booting') { 
     return <BootScreen />;
   }
 
-  // O <Fragment> foi trocado por um <div> para servir de limite
   return (
-    <div ref={constraintsRef} className="w-screen h-screen overflow-hidden">
+    // 3. A referência é aplicada ao container principal.
+    <div ref={constraintsRef} className="w-screen h-screen overflow-hidden bg-black">
+      
+      {/* Camada 1: O Sistema Operacional */}
       {isMobile ? <MobileHomeScreen /> : <Desktop />}
 
-      {openWindows.map((win) => (
-        isMobile 
-          ? <MobileWindow
-              key={win.id}
-              appId={win.id}
-              title={win.title}
-            >
+      {/* Camada 2: As Janelas */}
+      {openWindows.map((win) => {
+        if (isMobile && !win.mobileIcon) return null;
+        if (!isMobile && !win.desktopIcon && win.id !== 'chrome') return null;
+        
+        return isMobile 
+          ? <MobileWindow key={win.id} appId={win.id} title={win.title}>
               {win.content}
             </MobileWindow>
           : <Window
@@ -37,11 +42,12 @@ function App() {
               zIndex={win.zIndex}
               width={win.width}
               height={win.height}
-              constraintsRef={constraintsRef} // Prop adicionada aqui
+              // 4. PASSAMOS AS "PAREDES" PARA CADA JANELA
+              constraintsRef={constraintsRef} 
             >
               {win.content}
             </Window>
-      ))}
+      })}
     </div>
   );
 }

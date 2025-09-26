@@ -1,15 +1,16 @@
+// src/lib/apps.config.jsx
 import React from 'react';
 
 // --- Componentes dos Apps ---
 import MeetWindow from '../components/apps/MeetWindow';
-import ProjectsFolder from '../components/apps/ProjectsFolder';
+// ProjectsFolder não é mais necessário e pode ser deletado
 import Browser from '../components/apps/Browser';
 import FileExplorer from '../components/apps/FileExplorer';
 import SnakeGame from '../components/apps/SnakeGame';
 import SteamApp from '../components/apps/SteamApp';
 import TextViewer from '../components/apps/TextViewer'; 
 import ImageViewer from '../components/apps/ImageViewer';
-import VideoViewer from '../components/apps/VideoViewer'; // 1. IMPORTAMOS O NOVO COMPONENTE
+import VideoViewer from '../components/apps/VideoViewer';
 
 // --- Ícones do Desktop ---
 import meetIcon from '../assets/icons/meet.png';
@@ -28,12 +29,22 @@ import galleryMobileIcon from '../assets/icons-mobile/imagens-mobile.png';
 import chromeMobileIcon from '../assets/icons-mobile/chrome-mobile.png';
 import operaMobileIcon from '../assets/icons-mobile/opera-mobile.png';
 import whatsappMobileIcon from '../assets/icons-mobile/whatsapp-mobile.png';
-import videosMobileIcon from '../assets/icons-mobile/videos-mobile.png'; // 2. IMPORTAMOS O NOVO ÍCONE
+import videosMobileIcon from '../assets/icons-mobile/videos-mobile.png';
 
 export const appsConfig = {
   // --- APPS DO DESKTOP ORIGINAL ---
   meet: { id: 'meet', title: 'Apresentação', content: <MeetWindow />, width: 900, height: 650, desktopIcon: <img src={meetIcon} alt="Apresentação" className="w-12 h-12" />, mobileIcon: <img src={meetMobileIcon} alt="Meet" className="w-16 h-16" /> },
-  projectsFolder: { id: 'projectsFolder', title: 'Projetos', desktopIcon: <img src={projectsIcon} alt="Projetos" className="w-12 h-12" />, content: <ProjectsFolder />, width: 500, height: 350 },
+  
+  // A CORREÇÃO ESTÁ AQUI: 'projectsFolder' agora usa o FileExplorer
+  projectsFolder: { 
+    id: 'projectsFolder', 
+    title: 'Projetos', 
+    desktopIcon: <img src={projectsIcon} alt="Projetos" className="w-12 h-12" />, 
+    content: <FileExplorer initialView="projects" />, // Aponta para a nova visualização 'projects'
+    width: 800, // Ajustamos o tamanho para ser consistente
+    height: 500 
+  },
+
   myComputer: { id: 'myComputer', title: 'Meu Computador', desktopIcon: <img src={myComputerIcon} alt="Meu PC" className="w-12 h-12" />, content: <FileExplorer />, width: 800, height: 500 },
   trash: { id: 'trash', title: 'Lixeira', desktopIcon: <img src={trashIcon} alt="Lixeira" className="w-12 h-12" />, content: <FileExplorer initialView="trash" />, width: 800, height: 500 },
   topSecret: { id: 'topSecret', title: 'Top Secret.exe', desktopIcon: <img src={topSecretIcon} alt="Top Secret" className="w-12 h-12" />, content: <SnakeGame />, width: 700, height: 780 },
@@ -46,7 +57,6 @@ export const appsConfig = {
   gallery: { id: 'gallery', title: 'Galeria', content: <ImageViewer />, width: 360, height: 600, mobileIcon: <img src={galleryMobileIcon} alt="Galeria" className="w-16 h-16" /> },
   whatsapp: { id: 'whatsapp', title: 'WhatsApp', actionType: 'link', url: 'https://wa.me/5511968108594?text=Ol%C3%A1%20Naz%C3%A1rio%2C%20acabei%20de%20ver%20seu%20portfolio%2C%20podemos%20conversar%3F', mobileIcon: <img src={whatsappMobileIcon} alt="WhatsApp" className="w-16 h-16" /> },
   
-  // 3. NOVA ENTRADA PARA O APP DE VÍDEOS
   videosApp: {
     id: 'videosApp',
     title: 'Vídeos',

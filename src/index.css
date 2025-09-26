@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* 
+  ESTA É A REGRA DE OURO.
+  Ela tranca o layout e proíbe scrollbars na página principal.
+*/
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  /* Fundo preto como garantia, caso o wallpaper demore a carregar */
+  background-color: #000; 
+}

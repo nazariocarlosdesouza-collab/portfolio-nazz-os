@@ -1,35 +1,26 @@
-// src/lib/store.js - COMPLETO E ATUALIZADO
+// src/lib/store.js
 import { create } from 'zustand';
 
 export const useStore = create((set) => ({
-  // --- Estados do Boot ---
   bootState: 'booting',
   finishBoot: () => set({ bootState: 'finished' }),
-
-  // --- Estados das Janelas ---
   openWindows: [],
   zIndexCounter: 10,
+  selectedIcon: null,
 
-  // --- NOVO ESTADO: Ícone Selecionado ---
-  selectedIcon: null, // Armazena o ID do ícone atualmente selecionado
-
-  // --- Funções das Janelas ---
   openWindow: (app) => set((state) => {
-    const isAlreadyOpen = state.openWindows.some(win => win.id === app.id);
-    if (isAlreadyOpen) {
-      const newZIndex = state.zIndexCounter + 1;
+    const existingWindow = state.openWindows.find(win => win.id === app.id);
+    const newZIndex = state.zIndexCounter + 1;
+    if (existingWindow) {
       return {
-        openWindows: state.openWindows.map(win => 
+        openWindows: state.openWindows.map(win =>
           win.id === app.id ? { ...win, zIndex: newZIndex } : win
         ),
         zIndexCounter: newZIndex,
       };
     }
-    
-    const newZIndex = state.zIndexCounter + 1;
     const newWindow = { ...app, zIndex: newZIndex };
-
-    return { 
+    return {
       openWindows: [...state.openWindows, newWindow],
       zIndexCounter: newZIndex,
     };
@@ -49,7 +40,6 @@ export const useStore = create((set) => ({
     };
   }),
 
-  // --- NOVAS FUNÇÕES: Controle de Ícones ---
   setSelectedIcon: (iconId) => set({ selectedIcon: iconId }),
   clearSelectedIcon: () => set({ selectedIcon: null }),
 }));

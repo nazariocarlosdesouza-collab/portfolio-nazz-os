@@ -1,33 +1,37 @@
 // src/components/os/Desktop.jsx
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useStore } from '../../lib/store';
 import { appsConfig } from '../../lib/apps.config.jsx';
 import DesktopIcon from './DesktopIcon';
 import Taskbar from './Taskbar';
 import ParticlesWallpaper from './ParticlesWallpaper';
-// A importação do Window não é mais necessária aqui
+import StartMenu from './StartMenu'; // 1. IMPORTAMOS O NOVO COMPONENTE
 import whatsappIcon from '../../assets/icons/whatsapp.png';
 
 const Desktop = () => {
-  // Não precisamos mais do openWindows aqui
-  const { openWindow, selectedIcon, setSelectedIcon, clearSelectedIcon } = useStore();
+  // 2. PEGAMOS OS NOVOS ESTADOS E FUNÇÕES
+  const { openWindow, selectedIcon, setSelectedIcon, clearSelectedIcon, isStartMenuOpen, closeStartMenu } = useStore();
   const WHATSAPP_URL = 'https://wa.me/5511968108594?text=Ol%C3%A1%20Naz%C3%A1rio%2C%20acabei%20de%20ver%20seu%20portfolio%2C%20podemos%20conversar%3F';
   const desktopApps = Object.values(appsConfig).filter(app => app.desktopIcon);
   const [showIntroText, setShowIntroText] = useState(true);
-  
-  // A ref das constraints é movida para o App.jsx, que é o container real.
-  // Mas podemos manter a 'main' para o layout dos ícones.
 
   useEffect(() => {
     const timer = setTimeout(() => setShowIntroText(false), 5000);
     return () => clearTimeout(timer);
   }, []);
+  
+  // Função para fechar o menu e limpar a seleção
+  const handleDesktopClick = () => {
+    clearSelectedIcon();
+    closeStartMenu();
+  };
 
   return (
     <ParticlesWallpaper>
+      {/* 3. O 'onClick' agora chama a nova função */}
       <main 
         className="h-screen w-screen p-4 pb-16 overflow-hidden relative bg-transparent z-10"
-        onClick={clearSelectedIcon}
+        onClick={handleDesktopClick}
       >
         {showIntroText && (
           <div className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none animate-pulse">
@@ -58,7 +62,9 @@ const Desktop = () => {
           />
         </div>
         
-        {/* A RENDERIZAÇÃO DAS JANELAS FOI REMOVIDA DAQUI. */}
+        {/* 4. RENDERIZAÇÃO CONDICIONAL DO MENU INICIAR */}
+        {isStartMenuOpen && <StartMenu />}
+        
       </main>
       <Taskbar />
     </ParticlesWallpaper>

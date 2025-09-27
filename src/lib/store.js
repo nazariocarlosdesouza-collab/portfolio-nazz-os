@@ -8,6 +8,11 @@ export const useStore = create((set) => ({
   zIndexCounter: 10,
   selectedIcon: null,
 
+  // --- NOVO ESTADO E FUNÇÃO PARA O MENU INICIAR ---
+  isStartMenuOpen: false,
+  toggleStartMenu: () => set((state) => ({ isStartMenuOpen: !state.isStartMenuOpen })),
+  closeStartMenu: () => set({ isStartMenuOpen: false }), // Função para fechar o menu
+
   openWindow: (app) => set((state) => {
     const existingWindow = state.openWindows.find(win => win.id === app.id);
     const newZIndex = state.zIndexCounter + 1;

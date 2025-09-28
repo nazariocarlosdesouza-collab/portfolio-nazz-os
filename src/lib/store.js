@@ -8,10 +8,14 @@ export const useStore = create((set) => ({
   zIndexCounter: 10,
   selectedIcon: null,
 
-  // --- NOVO ESTADO E FUNÇÃO PARA O MENU INICIAR ---
+  // --- ESTADO DO BSOD (TELA AZUL) ---
+  isBsodActive: false,
+  triggerBsod: () => set({ isBsodActive: true }),
+  resetBsod: () => set({ isBsodActive: false, bootState: 'booting' }), // Adicionamos 'bootState' para simular o reboot
+
   isStartMenuOpen: false,
   toggleStartMenu: () => set((state) => ({ isStartMenuOpen: !state.isStartMenuOpen })),
-  closeStartMenu: () => set({ isStartMenuOpen: false }), // Função para fechar o menu
+  closeStartMenu: () => set({ isStartMenuOpen: false }),
 
   openWindow: (app) => set((state) => {
     const existingWindow = state.openWindows.find(win => win.id === app.id);

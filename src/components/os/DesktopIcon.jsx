@@ -1,43 +1,44 @@
-// src/components/os/DesktopIcon.jsx
+// src/components/os/DesktopIcon.jsx - VERSÃO DEFINITIVA E PASSIVA
 import React, { useRef } from 'react';
 
-const DesktopIcon = ({ icon, label, onDoubleClick, onClick, isSelected, textColor = 'text-white' }) => {
+const DesktopIcon = ({ id, icon, label, onDoubleClick, onClick, isSelected, textColor = 'text-white', onDragStart }) => {
   const containerClasses = `flex flex-col items-center justify-center text-center w-24 h-24 p-2 m-2 rounded-lg cursor-pointer transition-colors duration-150 ${
     isSelected ? 'bg-white/20' : 'hover:bg-white/10'
   }`;
-  const textClasses = `text-sm mt-1 ${isSelected ? 'font-semibold' : ''} ${textColor}`;
+  const textClasses = `text-sm mt-1 ${isSelected ? 'font-semibold' : ''} ${textColor} pointer-events-none`;
 
-  // Usamos useRef para o timer para não causar re-renderizações.
   const clickTimeout = useRef(null);
 
   const handleClick = (e) => {
-    e.stopPropagation(); // Impede que o evento se propague.
-
-    // Se um timer já existe, é um duplo clique.
+    e.stopPropagation();
     if (clickTimeout.current) {
       clearTimeout(clickTimeout.current);
       clickTimeout.current = null;
-      if (onDoubleClick) {
-        onDoubleClick(); // DISPARA UM ÚNICO SINAL DE DUPLO CLIQUE.
-      }
+      if (onDoubleClick) onDoubleClick();
     } else {
-      // Se não há timer, é o primeiro clique. Inicia um.
       clickTimeout.current = setTimeout(() => {
-        if (onClick) {
-          onClick(); // Se o timer não for cancelado, dispara o clique simples.
-        }
+        if (onClick) onClick();
         clickTimeout.current = null;
-      }, 250); // Janela de 250ms.
+      }, 250);
+    }
+  };
+
+  // A única responsabilidade deste componente é chamar a função onDragStart que ele recebe do pai.
+  const handleDragStart = (e) => {
+    if (onDragStart) {
+      onDragStart(e, id); // Informa ao pai o evento e o próprio ID.
     }
   };
 
   return (
-    <div 
+    <div
+      id={id}
+      draggable
+      onDragStart={handleDragStart}
       className={containerClasses}
-      // Removemos onDoubleClick e usamos apenas nosso sistema de clique controlado.
       onClick={handleClick}
     >
-      <div>{icon}</div>
+      <div className="pointer-events-none">{icon}</div>
       <span className={textClasses}>{label}</span>
     </div>
   );

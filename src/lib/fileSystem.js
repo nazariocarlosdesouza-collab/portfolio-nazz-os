@@ -112,14 +112,107 @@ export const chromeSites = [
   },
 ];
 
-// LISTA DE SITES PARA O NAVEGADOR SECUNDÁRIO (OPERA)
+// LISTA DE SITES PARA O NAVEGADOR SECUNDÁRIO (OPERA) COM AS STACKS ATUALIZADAS
 export const operaSites = [
-  { name: 'NC4 Design', url: 'https://www.nc4design.com.br/' },
-  { name: 'Apollo LP', url: 'https://www.nc4design.com.br/lp/apollo' },
-  { name: 'Bravionn', url: 'https://www.bravionn.com.br/' },
-  { name: 'Água Help', url: 'https://aguahelp.com.br/' },
-  { name: 'Comics Crossover', url: 'https://comicscrossover.com/' },
-  { name: 'Teen Pure Emo', url: 'https://teenpureemo.com/' },
+  { 
+    name: 'NC4 Design', 
+    url: 'https://www.nc4design.com.br/',
+    stack: {
+      react: 'Base tecnológica para criar interfaces rápidas e modernas.',
+      typescript: 'Garante um código mais robusto e livre de erros.',
+      tailwindcss: 'Criação de um design totalmente personalizado e responsivo.',
+      shadcn: 'Biblioteca de elementos visuais que assegura um design coeso.',
+      vite: 'Tecnologia de otimização que faz o site carregar instantaneamente.',
+      bun: 'Otimizador que torna a construção e manutenção mais eficiente.',
+      vercel: 'Hospedagem de alta performance que garante velocidade e segurança.',
+      emailjs: 'Responsável pela comunicação via formulários de forma segura.',
+      photoshop: 'Tratamento profissional de imagens para máxima qualidade visual.',
+      'google-tag-manager': 'Gerenciamento central de ferramentas de marketing.',
+      'google-analytics': 'Monitoramento de tráfego e comportamento dos visitantes.',
+      'google-search-console': 'Ferramenta para garantir que o site seja encontrado no Google.',
+    }
+  },
+  { 
+    name: 'Apollo LP', 
+    url: 'https://www.nc4design.com.br/lp/apollo',
+    stack: {
+      react: 'Base tecnológica para criar interfaces rápidas e modernas.',
+      typescript: 'Garante um código mais robusto e livre de erros.',
+      tailwindcss: 'Criação de um design totalmente personalizado e responsivo.',
+      shadcn: 'Biblioteca de elementos visuais que assegura um design coeso.',
+      vite: 'Tecnologia de otimização que faz o site carregar instantaneamente.',
+      bun: 'Otimizador que torna a construção e manutenção mais eficiente.',
+      vercel: 'Hospedagem de alta performance que garante velocidade e segurança.',
+      emailjs: 'Responsável pela comunicação via formulários de forma segura.',
+      photoshop: 'Tratamento profissional de imagens para máxima qualidade visual.',
+      'google-tag-manager': 'Gerenciamento central de ferramentas de marketing.',
+      'google-analytics': 'Monitoramento de tráfego e comportamento dos visitantes.',
+      'google-search-console': 'Ferramenta para garantir que o site seja encontrado no Google.',
+    }
+  },
+  { 
+    name: 'Bravionn', 
+    url: 'https://www.bravionn.com.br/',
+    stack: {
+      react: 'Base tecnológica para criar interfaces rápidas e modernas.',
+      typescript: 'Garante um código mais robusto e livre de erros.',
+      tailwindcss: 'Criação de um design totalmente personalizado e responsivo.',
+      shadcn: 'Biblioteca de elementos visuais que assegura um design coeso.',
+      vite: 'Tecnologia de otimização que faz o site carregar instantaneamente.',
+      bun: 'Otimizador que torna a construção e manutenção mais eficiente.',
+      vercel: 'Hospedagem de alta performance que garante velocidade e segurança.',
+      emailjs: 'Responsável pela comunicação via formulários de forma segura.',
+      photoshop: 'Tratamento profissional de imagens para máxima qualidade visual.',
+      'google-tag-manager': 'Gerenciamento central de ferramentas de marketing.',
+      'google-analytics': 'Monitoramento de tráfego e comportamento dos visitantes.',
+      'google-search-console': 'Ferramenta para garantir que o site seja encontrado no Google.',
+    }
+  },
+  { 
+    name: 'Água Help', 
+    url: 'https://aguahelp.com.br/',
+    stack: {
+      wordpress: 'Base do site',
+      elementor: 'Construção da interface',
+      photoshop: 'Tratamento de imagens e redimensionamento',
+      hostinger: 'Hospedagem compartilhada e email',
+      'google-tag-manager': 'Integração para outras ferramentas Google',
+      'google-analytics': 'Configuração e integração ao Google Tag Manager',
+      'google-search-console': 'Indexação do site ao Google',
+    }
+  },
+  { 
+    name: 'Comics Crossover', 
+    url: 'https://comicscrossover.com/',
+    stack: {
+      wordpress: 'Base do site',
+      elementor: 'Construção da interface',
+      illustrator: 'Para criação do logo',
+      n8n: 'Para automatizar a criação de artigos, imagens e postar',
+      'chat-gpt': 'Para criação e elaboração dos Artigos',
+      sora: 'Para a Criação das imagens',
+      'google-tag-manager': 'Integração para outras ferramentas Google',
+      'google-analytics': 'Configuração e integração ao Google Tag Manager',
+      'google-search-console': 'Indexação do site ao Google',
+      hostinger: 'Hospedagem compartilhada e e-mails corporativos',
+    }
+  },
+  { 
+    name: 'Teen Pure Emo', 
+    url: 'https://teenpureemo.com/',
+    stack: {
+      wordpress: 'Base do site',
+      elementor: 'Construção da interface',
+      illustrator: 'Para criação do logo',
+      n8n: 'Para automatizar a criação de artigos, imagens e postar',
+      'chat-gpt': 'Para criação e elaboração dos Artigos',
+      sora: 'Para a Criação das imagens',
+      'google-tag-manager': 'Integração para outras ferramentas Google',
+      'google-analytics': 'Configuração e integração ao Google Tag Manager',
+      'google-search-console': 'Indexação do site ao Google',
+      hostinger: 'Hospedagem compartilhada e e-mails corporativos',
+    }
+  },
 ];
 
 export const fileSystem = {

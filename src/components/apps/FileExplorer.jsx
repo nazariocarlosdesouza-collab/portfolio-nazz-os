@@ -4,6 +4,7 @@ import { useStore } from '../../lib/store';
 import NativeVideoPlayer from './NativeVideoPlayer';
 import ImageViewer from './ImageViewer';
 import TextViewer from './TextViewer';
+import ProfileViewer from './ProfileViewer'; // 1. IMPORTAR O PROFILE VIEWER
 import { appsConfig } from '../../lib/apps.config';
 import { fileSystem } from '../../lib/fileSystem';
 import whatsappIcon from '../../assets/icons/whatsapp.png';
@@ -30,10 +31,22 @@ const FileExplorer = ({ initialView = 'root' }) => {
     { id: 'whatsapp', name: 'Whatsapp', icon: <img src={whatsappIcon} alt="WhatsApp" className="w-12 h-12" />, action: () => window.open('https://wa.me/5511968108594?text=Ol%C3%A1%20Naz%C3%A1rio%2C%20acabei%20de%20ver%20seu%20portfolio%2C%20podemos%20conversar%3F', '_blank'), }
   ];
 
-  const handleOpenVideo = (video) => { openWindow({ id: `video-${video.path}`, title: video.name, content: <NativeVideoPlayer videoId={video.path} title={video.name} />, width: 800, height: 500, desktopIcon: true }); };
-  const handleOpenImage = (image) => { openWindow({ id: `image-${image.path}`, title: image.name, content: <ImageViewer imageSrc={image.path} title={image.name} />, width: 700, height: 550, desktopIcon: true }); };
-  const handleOpenNotepad = (doc) => { openWindow({ id: `doc-${doc.id}`, title: doc.name, content: <TextViewer textContent={doc.content} />, width: 600, height: 450, desktopIcon: true }); };
+  const handleOpenVideo = (video) => { openWindow({ id: `video-${video.path}`, title: video.name, content: <NativeVideoPlayer videoId={video.path} title={video.name} />, width: 800, height: 500 }); };
+  const handleOpenImage = (image) => { openWindow({ id: `image-${image.path}`, title: image.name, content: <ImageViewer imageSrc={image.path} title={image.name} />, width: 700, height: 550 }); };
+  const handleOpenNotepad = (doc) => { openWindow({ id: `doc-${doc.id}`, title: doc.name, content: <TextViewer textContent={doc.content} />, width: 600, height: 450 }); };
   
+  // 2. CRIAR A NOVA FUNÇÃO, SEGUINDO O PADRÃO EXISTENTE
+  const handleOpenProfile = (profile) => {
+    const profileConfig = appsConfig.profileViewer; // Pega width/height do apps.config
+    openWindow({ 
+      id: profile.id, 
+      title: profile.name, 
+      content: <ProfileViewer />, 
+      width: profileConfig.width, 
+      height: profileConfig.height 
+    });
+  };
+
   const sidebarItems = [
     { name: 'Área de Trabalho', icon: <img src={myComputerIcon} alt="Desktop" className="w-5 h-5" />, view: 'root' },
     { name: 'Projetos', icon: <img src={projectsIcon} alt="Projetos" className="w-5 h-5" />, view: 'projects' },
@@ -49,7 +62,7 @@ const FileExplorer = ({ initialView = 'root' }) => {
       file.action();
       return;
     }
-    // A LÓGICA ATUALIZADA RECONHECE O NOVO 'actionType'
+    
     switch (file.actionType) {
       case 'openApp':
         openWindow(appsConfig[file.appId]);
@@ -57,8 +70,12 @@ const FileExplorer = ({ initialView = 'root' }) => {
       case 'openLink':
         window.open(file.url, '_blank');
         break;
-      case 'openTextViewer': // NOVO CASO
-        handleOpenNotepad(file); // Reutilizamos a função que já existe
+      case 'openTextViewer':
+        handleOpenNotepad(file);
+        break;
+      // 3. ADICIONAR O NOVO CASO PARA O NOSSO ACTION TYPE
+      case 'openProfileViewer':
+        handleOpenProfile(file);
         break;
       default:
         const { onDoubleClick: defaultAction } = getCurrentViewData();

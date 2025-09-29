@@ -10,13 +10,11 @@ Escopo da minha ideia inicial
 
 Criar um portfolio, imersivo, interativo que não apenas apresente o meu portfolio mas que demonstre a minha capacidade técnica e criativa de uma vez só, ter um portfolio que auto me venda de forma fluida rápida e divertida.
 
-A base é criar um portfolio online que seja a simulação real de sistema operacional com carregamento Nazz Os... em destaque abaixo carregado sistema operacional de portifólio online, na tela de load. 
+A base é criar um portfolio online que seja a simulação real de sistema operacional com carregamento Nazz Os... em destaque abaixo carregado sistema operacional de portifólo online, na tela de load. 
 
 Ao carregar o usuário vai se deparar um com uma tela de um sistema operacional aonde logo de cara ele já vê uma tela com linhas coloridas em movimento, todas ligas por pontinhos e interagem com a movimentação do mouse, da uma ideia de conexão neural em um background preto.
 
 ao lado esquerdo é possível ver os ícones do Meet, a pasta projetos, o ícone do meu computador, a lixeira, a pasta top secret o logo da steam e o logo do whatsapp, sendo que todos são interativos.
-
-Meet: Abre um vídeo curto aonde eu me apresento de forma rápida.
 
 Pasta projetos: ao dar dois clique abre o explorado de arquivos com dois ícones o Navegador do Chrome que ao ser clicado é possível ver alguns sites que eu já desenvolvi em um simulador de navegador real já com as abas de uma ao lado da outra já com os respectivos sites, clicou abre o site e é possível navegar pelo site inteiro pois ele é um iframe que busca o site real, todas as janelas que se abrem tem os botões - Minimizar / Quadrado = Maximizar e o botão fechar.
 
@@ -293,11 +291,10 @@ export const fileSystem = {
       appId: 'opera'
     },
     { 
-      id: 'curriculo-link', 
-      name: 'Currículo', 
+      id: 'perfil-tecnico-link', 
+      name: 'Perfil Técnico', 
       icon: curriculoIcon,
-      actionType: 'openLink',
-      url: '/curriculo.pdf'
+      actionType: 'openProfileViewer'
     },
     {
       id: 'escopo-doc',
@@ -335,6 +332,6 @@ export const fileSystem = {
     { name: 'bravionn-04.png', path: '/lixeira/bravionn-04.png' },
   ],
   documents: [
-    { id: 'checklist-doc', name: 'Checklist.txt', icon: notepadIcon, content: checklistText },
+    { id: 'checklist-doc', name: 'Checklist.txt', icon: notepadIcon, content: checklistText, actionType: 'openTextViewer' },
   ],
 };

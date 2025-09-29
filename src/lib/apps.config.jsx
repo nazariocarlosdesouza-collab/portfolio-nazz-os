@@ -2,7 +2,7 @@
 import React from 'react';
 
 // --- Componentes ---
-import MeetWindow from '../components/apps/MeetWindow';
+// O 'MeetWindow' foi removido daqui
 import Browser from '../components/apps/Browser';
 import FileExplorer from '../components/apps/FileExplorer';
 import SnakeGame from '../components/apps/SnakeGame';
@@ -10,9 +10,10 @@ import SteamApp from '../components/apps/SteamApp';
 import TextViewer from '../components/apps/TextViewer'; 
 import ImageViewer from '../components/apps/ImageViewer';
 import VideoViewer from '../components/apps/VideoViewer';
+import ProfileViewer from '../components/apps/ProfileViewer';
 
 // --- Ícones ---
-import meetIcon from '../assets/icons/meet.png';
+// O 'meetIcon' foi removido daqui
 import projectsIcon from '../assets/icons/pastas.png';
 import myComputerIcon from '../assets/icons/meu-computador.png';
 import topSecretIcon from '../assets/icons/pasta2.png';
@@ -22,7 +23,7 @@ import steamIcon from '../assets/icons/steam.png';
 import operaIcon from '../assets/icons/opera.png';
 
 // --- Ícones Mobile ---
-import meetMobileIcon from '../assets/icons-mobile/meet-mobile.png';
+// O 'meetMobileIcon' foi removido daqui
 import steamMobileIcon from '../assets/icons-mobile/steam-mobile.png';
 import notepadMobileIcon from '../assets/icons-mobile/bloco-de-notas-mobile.png';
 import galleryMobileIcon from '../assets/icons-mobile/imagens-mobile.png';
@@ -34,7 +35,7 @@ import videosMobileIcon from '../assets/icons-mobile/videos-mobile.png';
 import { operaSites } from './fileSystem';
 
 export const appsConfig = {
-  meet: { id: 'meet', title: 'Meet: Portfolio Nazz OS', content: <MeetWindow />, width: 900, height: 650, desktopIcon: <img src={meetIcon} alt="Apresentação" className="w-12 h-12" />, mobileIcon: <img src={meetMobileIcon} alt="Meet" className="w-16 h-16" /> },
+  // O objeto 'meet' foi completamente removido daqui
   
   projectsFolder: { id: 'projectsFolder', title: 'Projetos', desktopIcon: <img src={projectsIcon} alt="Projetos" className="w-12 h-12" />, content: <FileExplorer initialView="projects" />, width: 800, height: 500 },
   myComputer: { id: 'myComputer', title: 'Meu Computador', desktopIcon: <img src={myComputerIcon} alt="Meu PC" className="w-12 h-12" />, content: <FileExplorer />, width: 800, height: 500 },
@@ -64,6 +65,14 @@ export const appsConfig = {
     mobileIcon: <img src={operaMobileIcon} alt="Opera" className="w-16 h-16" />,
     windowTheme: 'opera',
     windowIcon: <img src={operaIcon} alt="Opera" className="w-4 h-4 mr-2" />
+  },
+
+  profileViewer: {
+    id: 'profileViewer',
+    title: 'Perfil Técnico - Nazário Carlos',
+    content: <ProfileViewer />,
+    width: 800,
+    height: 650
   },
 
   notepad: { id: 'notepad', title: 'Escopo', content: <TextViewer />, width: 360, height: 600, mobileIcon: <img src={notepadMobileIcon} alt="Bloco de Notas" className="w-16 h-16" /> },

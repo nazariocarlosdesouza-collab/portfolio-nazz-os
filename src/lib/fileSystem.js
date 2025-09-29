@@ -4,7 +4,52 @@ import chromeIcon from '../assets/icons/chrome.png';
 import curriculoIcon from '../assets/icons/curriculo.png';
 import operaIcon from '../assets/icons/opera.png';
 
-const projectScopeText = `... (todo o seu texto do escopo aqui) ...`;
+const projectScopeText = `Projeto Nazz OS
+
+Escopo da minha ideia inicial
+
+Criar um portfolio, imersivo, interativo que não apenas apresente o meu portfolio mas que demonstre a minha capacidade técnica e criativa de uma vez só, ter um portfolio que auto me venda de forma fluida rápida e divertida.
+
+A base é criar um portfolio online que seja a simulação real de sistema operacional com carregamento Nazz Os... em destaque abaixo carregado sistema operacional de portifólio online, na tela de load. 
+
+Ao carregar o usuário vai se deparar um com uma tela de um sistema operacional aonde logo de cara ele já vê uma tela com linhas coloridas em movimento, todas ligas por pontinhos e interagem com a movimentação do mouse, da uma ideia de conexão neural em um background preto.
+
+ao lado esquerdo é possível ver os ícones do Meet, a pasta projetos, o ícone do meu computador, a lixeira, a pasta top secret o logo da steam e o logo do whatsapp, sendo que todos são interativos.
+
+Meet: Abre um vídeo curto aonde eu me apresento de forma rápida.
+
+Pasta projetos: ao dar dois clique abre o explorado de arquivos com dois ícones o Navegador do Chrome que ao ser clicado é possível ver alguns sites que eu já desenvolvi em um simulador de navegador real já com as abas de uma ao lado da outra já com os respectivos sites, clicou abre o site e é possível navegar pelo site inteiro pois ele é um iframe que busca o site real, todas as janelas que se abrem tem os botões - Minimizar / Quadrado = Maximizar e o botão fechar.
+
+Ainda na Pasta projetos temos um ícone de pdf que ao clicar ao clicar abre o meu currículo em pdf mesmo.
+
+Temos o Ícone de Meu computador na área de trabalho ao clicar nele, abre uma pasta com a estrutura de arquivos do Windows ( Área de trabalho / Downloads / Documentos / Imagens / Musicas / Videos e Lixeira).
+
+Em Área de trabalho, tem todos os ícones clicáveis funcionais que estão em Meu Computador.
+Em downloads coloquei 4 imagens que ao serem clicadas elas abrem em um visualizador de imagens.
+Na pasta Documentos temos o checklist de alguns processos que foram feitos e esse documento aqui, com o descritivo completo do projeto.
+Na nossa pasta Imagens, inseri mais 4 imagens funcionais.
+Já pasta Músicas estou definindo serão representadas as músicas, mas teremos.
+Na pasta vídeos temos 4 vídeos que ao serem clicados abrem o player, e passa um vídeo do meu canal de gameplay do you tube.
+Temos a Lixeira que contem 7 arquivos de imagens que deixei com a função clicável e elas abrem também.
+Chegamos a pasta Top Secret.exe que o ser clicada abre uma nova janela com o joguinho Snake.
+Agora vamos ao ícone da Steam, esse ao ser clicado simula a interface da biblioteca de jogos da steam com o joguinhos funcionais totalmente jogáveis, Jogo da velha, jogo da forca, Pong, Jogo da memoria, Breakout, Campo minado, 2048 e o clássico Space invaders todos os jogos tem o icone e a capa do jogo.
+
+Ao final temos o logo do Whatsapp que ao ser clicado o usuário é direcionado ao WhatsApp para falar direto comigo.
+
+Essa é a base do meu portfolio iniciado em 22/09/2025 e finalizada a primeira etapa em 28/09/2025 da ideia a concepção final.
+
+A versão mobile simula os aplicativos de um smartphone, da mesma forma que na versão desktop eles também são todos interativos e funcionais.
+
+Todo o projeto até aqui foi desenvolvido com: 
+
+React
+Vite
+Typescript
+Tsparticles
+Tailwindcss
+Bun
+Vercel`;
+
 const checklistText = `... (todo o seu texto do checklist aqui) ...`;
 
 // LISTA DE SITES PARA O NAVEGADOR PADRÃO (CHROME) COM AS STACKS
@@ -216,6 +261,22 @@ export const operaSites = [
 ];
 
 export const fileSystem = {
+  desktop: [
+    { 
+      id: 'portfolio-link-desktop', 
+      name: 'Portifolio Nazário (Chrome)', 
+      icon: chromeIcon, 
+      actionType: 'openApp',
+      appId: 'chrome'
+    },
+    {
+      id: 'escopo-doc-desktop',
+      name: 'Escopo.txt',
+      icon: notepadIcon,
+      actionType: 'openTextViewer',
+      content: projectScopeText
+    }
+  ],
   projects: [
     { 
       id: 'portfolio-link', 

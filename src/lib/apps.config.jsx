@@ -1,4 +1,4 @@
-// src/lib/apps.config.jsx - TÍTULO DO MEET CORRIGIDO
+// src/lib/apps.config.jsx
 import React from 'react';
 
 // --- Componentes ---
@@ -34,7 +34,6 @@ import videosMobileIcon from '../assets/icons-mobile/videos-mobile.png';
 import { operaSites } from './fileSystem';
 
 export const appsConfig = {
-  // A alteração do título foi aplicada aqui.
   meet: { id: 'meet', title: 'Meet: Portfolio Nazz OS', content: <MeetWindow />, width: 900, height: 650, desktopIcon: <img src={meetIcon} alt="Apresentação" className="w-12 h-12" />, mobileIcon: <img src={meetMobileIcon} alt="Meet" className="w-16 h-16" /> },
   
   projectsFolder: { id: 'projectsFolder', title: 'Projetos', desktopIcon: <img src={projectsIcon} alt="Projetos" className="w-12 h-12" />, content: <FileExplorer initialView="projects" />, width: 800, height: 500 },
@@ -50,6 +49,7 @@ export const appsConfig = {
     width: 1024, 
     height: 700, 
     isBrowser: true,
+    desktopIcon: <img src={chromeIcon} alt="Chrome" className="w-12 h-12" />,
     mobileIcon: <img src={chromeMobileIcon} alt="Chrome" className="w-16 h-16" /> 
   },
   
